@@ -1,0 +1,10 @@
+steps:
+  - name: "gcr.io/$PROJECT_ID/gitsecret:0.3.2-r0"
+    args: ["reveal"]
+    secretEnv:
+      - "GPG_PRIVATE_KEY"
+
+secrets:
+- kmsKeyName: "projects/[PROJECT-ID]/locations/global/keyRings/[KEYRING-NAME]/cryptoKeys/[KEY-NAME]"
+  secretEnv:
+    MY_SECRET: "[base64-encoded encrypted secret]"
