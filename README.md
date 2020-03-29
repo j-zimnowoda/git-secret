@@ -26,14 +26,14 @@ gpg --gen-key
 ## Obtaining GPG private key
 Get GPG key in base64 format:
 ```
-gpg --export-secret-key --armour <key-id> |base64
+GPG_PRIVATE_KEY=$(gpg --export-secret-key --armour <key-id> |base64)
 ```
 where `<key-id>` is an email provided while generating GPG key pair.
 
 Store GPG private key in a secure way at your pipeline provider (e.g.: use KMS)
 
 ## Configuring pipeline
-At the begining of your pipeline use this docker image to decrypt files. Provide environment variable `GPG_PRIVATE_KEY` that contains GPG key.
+At the begining of your pipeline use this docker image to decrypt files. Provide environment variable `GPG_PRIVATE_KEY` that contains  key.
 
 Make sure that your pipeline can access `git-secret:latest` Docker image.
 
